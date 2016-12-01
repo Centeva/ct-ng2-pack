@@ -1,15 +1,14 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, forwardRef, ElementRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { WherePipe } from 'angular-pipes/src/array/where.pipe';
+import * as _ from 'lodash';
 
 export interface NameValuePair { Name: string; Value: any; };
 
 @Component({
-	moduleId: module.id,
 	selector: 'search-options',
 	templateUrl: 'searchOptions.component.html',
-	styleUrls: ['searchOptions.component.css'],
+	styleUrls: ['searchOptions.component.less'],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,

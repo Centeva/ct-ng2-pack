@@ -1,14 +1,14 @@
 import { Component, Input, OnInit, OnDestroy, EventEmitter, Output, OnChanges, trigger, style, transition, animate, ViewChildren } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SearchModel } from '../../pipe/search.pipe';
-import * as moment from 'moment';
 import { Tools, EditFormComponent } from '../editForm';
+import * as moment from 'moment';
+import * as _ from 'lodash';
 
 @Component({
-	moduleId: module.id,
 	selector: 'edit-list',
 	templateUrl: 'editList.component.html',
-	styleUrls: ['editList.component.css'],
+	styleUrls: ['editList.component.less'],
 	animations: [
 		trigger('slideInOut', [
 			transition('void => *', [
@@ -26,6 +26,8 @@ export class EditListComponent implements OnInit, OnDestroy, OnChanges {
 	// forms: Array of forms to show. *These forms do not have to have the same structure technically, but should idealy.
 	@Input() forms: Tools.Form[] = [];
 	@Input() emptyMessage: string;
+	// refreshFunction: We have special ways of giving options and checklists info, this function is used to do that. (Its broken out because depending on your stack you need it to do differnet things. ie. If you have cdux it should hook up to the store.)
+	@Input() refreshFunction: Function;
 	// editing: Editing object.
 	editing: { [x: number]: boolean } = {};
 	// onAdd: We pass up an event when we click the add item button.
@@ -47,7 +49,6 @@ export class EditListComponent implements OnInit, OnDestroy, OnChanges {
 	ngOnInit() {
 		// this.storeSubscription = this.store.subscribe(s => this.onStoreChange(s));
 		// this.miscActions.poke();
-
 	};
 
 	ngOnDestroy() {
@@ -62,7 +63,8 @@ export class EditListComponent implements OnInit, OnDestroy, OnChanges {
 		// Call to get the codeTables.
 		// this.dataActions.getCodeTables(...this.lastCodeTables);
 
-		// this.refreshFormStuff(this.store.getValue());
+		this.refreshFunction();
+
 	}
 
 	// onStoreChange(s: AppState) {

@@ -1,2 +1,2 @@
-export * from './editList.component';
-export * from './editList.module';
+export { EditListComponent } from './editList.component';
+export { EditListModule } from './editList.module';

@@ -1,3 +1,5 @@
+import * as _ from 'lodash';
+
 export namespace Tools {
 	// FieldType: The type of fields we can show. This acts like a string enum. It HAS to be one of the values shown.
 	export enum FieldType {

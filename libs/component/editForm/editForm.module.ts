@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MdCheckboxModule } from '@angular2-material/checkbox';
 import { SearchOptionsModule } from '../searchOptions/';
 import { CheckListModule } from '../checkList';
-import { EditFormComponent } from './';
+import { EditFormComponent } from './editForm.component';
 
 @NgModule({
 	declarations: [

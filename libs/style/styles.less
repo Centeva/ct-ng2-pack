@@ -1,0 +1,85 @@
+.clearboth {
+	clear:both;
+}
+
+// drop shadows //
+.shadow {
+	box-shadow: 0px 3px 5px @gray;
+}
+
+.shadow-sm {
+	box-shadow: 0px 2px 4px @gray;
+}
+
+.shadow-text-sm {
+	text-shadow: 0px 2px 4px @gray;
+}
+
+.md-checkbox-focused .md-ink-ripple {
+	/* The default angular2-material has this weird circle around the checkbox after it's [un]checked that we don't like.  Getting rid of it globally here */
+	opacity: 0 !important;
+	background-color: transparent !important;
+}
+
+.md-checkbox-background {
+	background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.md-checkbox-frame, .md-checkbox-background {
+	border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+path.md-checkbox-checkmark-path {
+	stroke: rgba(35, 163, 96, 1) !important;
+}
+
+.on-site{
+    background-color: @on-site;
+    color: white;
+    margin: 1px;
+	cursor: pointer;
+}
+
+.prep-doc{
+    background-color: @prep-doc;
+    margin: 1px;
+	cursor: pointer;
+}
+
+.default{
+    background-color: inherit;
+    margin: 1px;
+}
+
+.on-site-click{
+    background-color: @on-site;
+    color: white;
+    margin: 1px;
+    cursor: pointer;
+}
+
+.on-site-click:hover{
+    outline: none;
+    border-color: lighten(@on-site, 5%);
+    box-shadow: 0 0 10px lighten(@on-site, 5%);
+}
+
+.on-site-click:active{
+    background-color: darken(@on-site, 5%);
+}
+
+.unavailable{
+    background-color: @leave;
+    color: white;
+    margin: 1px;
+    cursor: pointer;
+}
+
+.md-checkbox-label {
+	white-space: normal;
+	display: inline-flex;
+}
+
+.md-checkbox-inner-container {
+	white-space: inherit !important;
+}

@@ -1,2 +1,2 @@
-export * from './checkList.component';
-export * from './checkList.module';
+export { CheckListComponent } from './checkList.component';
+export { CheckListModule } from './checkList.module';

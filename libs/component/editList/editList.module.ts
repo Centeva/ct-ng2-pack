@@ -3,7 +3,7 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { EditformModule } from '../editForm';
 import { PipesModule } from '../../pipe/pipe.module';
-import { EditListComponent } from './';
+import { EditListComponent } from './editList.component';
 
 @NgModule({
 	declarations: [

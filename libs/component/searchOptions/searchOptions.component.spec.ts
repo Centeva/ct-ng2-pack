@@ -2,7 +2,7 @@
 
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { AppState, Store, dataReducer } from '../../../cdux';
+// import { AppState, Store, dataReducer } from '../../../cdux';
 import { async, inject} from '@angular/core/testing';
 
 import { SearchOptionsComponent } from './searchOptions.component';

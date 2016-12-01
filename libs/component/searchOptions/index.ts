@@ -1,2 +1,2 @@
-export * from './searchOptions.component';
-export * from './searchOptions.module';
+export { NameValuePair, SearchOptionsComponent } from './searchOptions.component';
+export { SearchOptionsModule } from './searchOptions.module';

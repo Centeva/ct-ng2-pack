@@ -1,12 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Tools } from '../editForm';
+import * as _ from 'lodash';
 
 @Component({
-	moduleId: module.id,
 	selector: 'check-list',
 	templateUrl: 'checkList.component.html',
-	styleUrls: ['checkList.component.css']
+	styleUrls: ['checkList.component.less']
 })
 export class CheckListComponent {
 	@Input() options: Tools.NameValuePair[] = [];

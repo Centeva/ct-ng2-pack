@@ -1,3 +1,3 @@
-export * from './editForm.component';
-export * from './editForm.models';
-export * from './editform.module';
+export { EditFormComponent } from './editForm.component';
+export { Tools } from './editForm.models';
+export { EditformModule } from './editform.module';
