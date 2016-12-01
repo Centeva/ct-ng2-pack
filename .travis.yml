@@ -1,13 +1,13 @@
 language: node_js
 node_js:
   - "6.6.0"
-before_script:
-  - npm install angular-cli -g
 
 install:
     - npm install
 
-before_script: cd demoApp/
+before_script:
+  - npm install angular-cli -g
+  - cd demoApp/
 
 script:
     - ng build
