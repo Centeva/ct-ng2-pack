@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "6.6.0"
 before_script:
-  - npm install grunt-cli -g
+  - npm install angular-cli -g
 
 install:
     - npm install
