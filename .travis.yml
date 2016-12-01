@@ -8,6 +8,7 @@ install:
 before_script:
   - npm install angular-cli -g
   - cd demoApp/
+  - npm install
 
 script:
     - ng build
