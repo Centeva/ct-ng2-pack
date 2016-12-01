@@ -1,0 +1,55 @@
+@import "../../../../style/variables.less";
+
+.header {
+	display: inline-block;
+	label {
+		margin: 14px;
+		margin-bottom: 0;
+	}
+}
+
+.field-row {
+
+	border-bottom: 1px solid lighten(@gray-lighter, 10%);
+	background-color: white;
+	p {
+		margin: 14px;
+	}
+
+	&:hover {
+		background-color: @brand-accent;
+		cursor: pointer;
+	}
+}
+
+.field {
+	display: inline-block;
+}
+
+.add-item {
+	background-color: transparent;
+	border: none;
+	color: @brand-action;
+	font-size: 18px;
+}
+
+.empty-message {
+	padding-left: 12px;
+	color: @gray-light;
+}
+
+.generic-button{
+	background-color: transparent;
+	border: none;
+	font-size: 14px;
+	color: @brand-primary;
+	padding: 8px;
+
+	i{
+		font-size: 18px;
+	}
+}
+
+.btn-icon {
+	padding-right: 5px;
+}

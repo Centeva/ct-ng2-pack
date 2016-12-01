@@ -1,0 +1,10 @@
+<div class="dropdown">
+	<label class="label" *ngIf="label">{{label}}</label>
+	<button class="form-control select" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [class.invalid]="isInvalid()">
+		<div class="placeholder">{{getSelected()}} <span class="caret pull-right"></span></div>
+	</button>
+
+	<div class="dropdown-menu" aria-labelledby="dLabel" (click)="$event.stopPropagation();">
+		<md-checkbox class="option" *ngFor="let option of options" [checked]="isChecked(option.Value)" (change)="onChanged(option.Value)">{{option.Name}}</md-checkbox>
+	</div>
+</div>

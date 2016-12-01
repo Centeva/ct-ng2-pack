@@ -1,0 +1,86 @@
+<div class="edit-container">
+	<div class="row">
+		<div *ngFor="let field of newForm?.Fields">
+			<div *ngIf="checkGroup(field, newForm.Fields) && !field.HideInForm">
+				<div [ngSwitch]="field.Type" class="field-input">
+
+					<!--Header-->
+					<div *ngSwitchCase="fieldType.Header" class="{{field.Params && field.Params.Width ? 'col-lg-' + field.Params.Width : 'col-lg-12'}}">
+						<h3 class="header">{{field.Name}}</h3>
+					</div>
+
+					<!--Static-->
+					<div *ngSwitchCase="fieldType.Static" class="{{field.Params && field.Params.Width ? 'col-lg-'+field.Params.Width : 'col-lg-4'}}">
+						<label>{{field.Name}} <i class="fa fa-question-circle" *ngIf="field.HelpText" (click)="helpText[field.Name] = !helpText[field.Name]"></i></label>
+						<div class="help-text" *ngIf="helpText[field.Name]" [@slideInOut]="helpText[field.Name]">
+							<p [@slideInOutChild]="helpText[field.Name]">{{field.HelpText}}</p>
+						</div>
+						<p class="">{{field.Value}}</p>
+					</div>
+
+					<!--text-->
+					<div *ngSwitchCase="fieldType.Text" class="{{field.Params && field.Params.Width ? 'col-lg-' + field.Params.Width : 'col-lg-4'}}">
+						<label>{{field.Name}} <i class="fa fa-question-circle" *ngIf="field.HelpText" (click)="helpText[field.Name] = !helpText[field.Name]"></i></label>
+						<div class="help-text" *ngIf="helpText[field.Name]" [@slideInOut]="helpText[field.Name]"><p [@slideInOutChild]="helpText[field.Name]">{{field.HelpText}}</p></div>
+						<input class="form-control" [(ngModel)]="field.Value" required="{{field?.Required}}" [class.invalid]="isFieldInvalid(field)">
+					</div>
+
+					<!--email-->
+					<div *ngSwitchCase="fieldType.Email" class="{{field.Params && field.Params.Width ? 'col-lg-' + field.Params.Width : 'col-lg-4'}}">
+						<label>{{field.Name}} <i class="fa fa-question-circle" *ngIf="field.HelpText" (click)="helpText[field.Name] = !helpText[field.Name]"></i></label>
+						<div class="help-text" *ngIf="helpText[field.Name]" [@slideInOut]="helpText[field.Name]"><p [@slideInOutChild]="helpText[field.Name]">{{field.HelpText}}</p></div>
+						<input class="form-control" [(ngModel)]="field.Value" required="{{field?.Required}}" [class.invalid]="isFieldInvalid(field)">
+					</div>
+
+					<!--TextArea-->
+					<div *ngSwitchCase="fieldType.TextArea" class="{{field.Params && field.Params.Width ? 'col-lg-' + field.Params.Width : 'col-lg-12'}}">
+						<label>{{field.Name}} <i class="fa fa-question-circle" *ngIf="field.HelpText" (click)="helpText[field.Name] = !helpText[field.Name]"></i></label>
+						<div class="help-text" *ngIf="helpText[field.Name]" [@slideInOut]="helpText[field.Name]"><p [@slideInOutChild]="helpText[field.Name]">{{field.HelpText}}</p></div>
+						<div class="text-area" contenteditable="true" [textContent]="field.Value" (input)="field.Value=$event.target.textContent" [class.invalid]="isFieldInvalid(field)">{{field.Value}}</div>
+					</div>
+
+					<!--Date-->
+					<div *ngSwitchCase="fieldType.Date" class="{{field.Params && field.Params.Width ? 'col-lg-' + field.Params.Width : 'col-lg-4'}}">
+						<label>{{field.Name}} <i class="fa fa-question-circle" *ngIf="field.HelpText" (click)="helpText[field.Name] = !helpText[field.Name]"></i></label>
+						<div class="help-text" *ngIf="helpText[field.Name]" [@slideInOut]="helpText[field.Name]"><p [@slideInOutChild]="helpText[field.Name]">{{field.HelpText}}</p></div>
+						<input class="form-control" type="date" [(ngModel)]="field.Value" required="{{field?.Required}}" [class.invalid]="isFieldInvalid(field)">
+					</div>
+
+					<!--Options-->
+					<div *ngSwitchCase="fieldType.Options" class="{{field.Params && field.Params.Width ? 'col-lg-' + field.Params.Width : 'col-lg-4'}}">
+						<label>{{field.Name}} <i class="fa fa-question-circle" *ngIf="field.HelpText" (click)="helpText[field.Name] = !helpText[field.Name]"></i></label>
+						<div class="help-text" *ngIf="helpText[field.Name]" [@slideInOut]="helpText[field.Name]"><p [@slideInOutChild]="helpText[field.Name]">{{field.HelpText}}</p></div>
+						<search-options [(ngModel)]="field.Value" [options]="field.Params?.OptionsArray" [required]="field?.Required" (onChange)="callChanged($event, field);"></search-options>
+						<!--<select class="form-control" [(ngModel)]="field.Value" required="{{field?.Required}}" (change)="callChanged($event.target.value, field);" [class.invalid]="isFieldInvalid(field)">
+							<option *ngFor="let option of field.Params?.OptionsArray" value="{{option.Value}}">{{option.Name}}</option>
+						</select>-->
+					</div>
+
+					<!--Checklist-->
+					<div *ngSwitchCase="fieldType.Checklist" class="{{field.Params && field.Params.Width ? 'col-lg-' + field.Params.Width : 'col-lg-4'}}">
+						<label>{{field.Name}} <i class="fa fa-question-circle" *ngIf="field.HelpText" (click)="helpText[field.Name] = !helpText[field.Name]"></i></label>
+						<div class="help-text" *ngIf="helpText[field.Name]" [@slideInOut]="helpText[field.Name]">
+							<p [@slideInOutChild]="helpText[field.Name]">{{field.HelpText}}</p>
+						</div>
+						<check-list [options]="field.Params?.OptionsArray" [values]="field.Value" (onChecked)="optionChecked(field, $event)" [required]="field?.Required"></check-list>
+					</div>
+
+					<!--Checkbox-->
+					<div *ngSwitchCase="fieldType.Checkbox" class="{{field.Params && field.Params.Width ? 'col-lg-' + field.Params.Width : 'col-lg-2'}} checkbox-padding">
+						<md-checkbox [(ngModel)]="field.Value" [checked]="field.Value">{{field.Name}}</md-checkbox>
+					</div>
+
+					<!--Button-->
+					<div *ngSwitchCase="fieldType.Button" class="{{field.Params && field.Params.Width ? 'col-lg-' + field.Params.Width : 'col-lg-2'}}">
+						<button type="button" (click)="callChanged($event.target.value, field);" class="generic-button"><i class="{{field.Params.Icon}}"></i> {{field.Value}}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="mar-top-sm">
+		<button class="btn add-item" (click)="save();" type="button" [disabled]="isFormInvalid()">Save</button>
+		<button type="button" (click)="cancel();" class="cancel"><i class="fa fa-times"></i> Cancel</button>
+		<button type="button" *ngIf="newForm.Util && newForm.Id !== 0" (click)="util();" class="util">{{newForm.UtilText}}</button>
+	</div>
+</div>

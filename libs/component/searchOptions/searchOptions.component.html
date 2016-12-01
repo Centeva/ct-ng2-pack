@@ -1,0 +1,7 @@
+<div class="search-options">
+	<input class="form-control search" [(ngModel)]="search" [class.invalid]="isInvalid()" (click)="openDropdown()" (keypress)="eventHandler($event.keyCode)">
+	<i class="pull-right caret" (click)="openDropdown()"></i>
+	<div class="dropdown" *ngIf="toggled">
+		<button class="option" *ngFor="let option of options | where: searchMatch.bind(this)" (click)="set(option.Value)">{{option.Name}}</button>
+	</div>
+</div>
