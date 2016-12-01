@@ -3,12 +3,13 @@ node_js:
   - "6.6.0"
 
 install:
+    - cd lib/
+    - npm install
+    - cd ../demoApp/
     - npm install
 
 before_script:
   - npm install angular-cli -g
-  - cd demoApp/
-  - npm install
 
 script:
     - ng build
