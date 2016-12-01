@@ -3,7 +3,7 @@ node_js:
   - "6.6.0"
 
 install:
-    - cd lib/
+    - cd libs/
     - npm install
     - cd ../demoApp/
     - npm install
