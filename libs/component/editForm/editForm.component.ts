@@ -1,5 +1,5 @@
 import { Component, Input, trigger, state, style, transition, animate, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription } from '../../node_modules/rxjs';
 import { Tools } from './editForm.models';
 import * as _ from 'lodash';
 
