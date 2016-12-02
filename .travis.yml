@@ -3,7 +3,7 @@ node_js:
   - "6.6.0"
 
 install:
-    - cd ../demoApp/
+    - cd demoApp/
     - npm install
 
 before_script:
